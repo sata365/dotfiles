@@ -1,0 +1,10 @@
+visual-studio-code
+sourcetree
+firefox
+wireshark
+iterm2
+macpass
+powershell
+microsoft-edge
+jetbrains-toolbox
+gpg-suite

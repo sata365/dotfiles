@@ -1,0 +1,6 @@
+git
+openssl
+gnupg2
+sslscan
+pinentry-mac
+mas
