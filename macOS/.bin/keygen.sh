@@ -6,13 +6,13 @@ gitname=$(git config --get user.name)
 gitemail=$(git config --get user.email)
 
 if [ ! -f ~/.ssh/id_25519 ]; then
-  sshkeypasswd=`date +%s | sha256sum | base64 | head -c 32`
-  ssh-keygen -t ed25519 -C ${gitemail} -N ${sshkeypasswd} -f ~/.ssh/id_25519
+  sshkeypasswd=`RAND=$RANDOM && echo ${RAND} | sha256sum | base64 | head -c 32`
+  ssh-keygen -t ed25519 -C ${gitemail} -N ${sshkeypasswd} -f ~/.ssh/id_ed25519
   echo "sshpasswd: ${sshkeypasswd}" >> ~/.dotfiles_tmp
 fi
 
-gpgkeypasswd=`date +%s | sha256sum | base64 | head -c 32`
-gpg --pinentry-mode loopback --passphrase ${gpgkeypasswd} --quic-generate-key "${gitname} <${gitemail}>" future-default default 0
+gpgkeypasswd=`RAND=$RANDOM && echo ${RAND} | sha256sum | base64 | head -c 32`
+gpg --pinentry-mode loopback --passphrase ${gpgkeypasswd} --quick-generate-key "${gitname} <${gitemail}>" future-default default 0
 echo "gpgpasswd: ${gpgkeypasswd}" >> ~/.dotfiles_tmp
 
 [ -f ~/.gitconfig_device_local ] || touch ~/.gitconfig_device_local
