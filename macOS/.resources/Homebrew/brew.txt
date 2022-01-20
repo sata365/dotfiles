@@ -4,3 +4,4 @@ gnupg2
 sslscan
 pinentry-mac
 mas
+coreutils
