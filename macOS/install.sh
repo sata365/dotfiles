@@ -28,8 +28,8 @@ fi
 /bin/bash ${DOTFILES_REPO_DIR}/macOS/.bin/resources.sh
 /bin/bash ${DOTFILES_REPO_DIR}/macOS/.bin/brew.sh
 
-if [[ -d ${LOCAL_DOTFILES_REPO} ]]; then
-  /bin/bash ${LOCAL_DOTFILES_REPO}/macOS/install.sh
+if [[ -d ${LOCAL_DOTFILES_REPO_DIR} ]]; then
+  /bin/bash ${LOCAL_DOTFILES_REPO_DIR}/macOS/install.sh
 fi
 
 /bin/bash ${DOTFILES_REPO_DIR}/macOS/.bin/keygen.sh
