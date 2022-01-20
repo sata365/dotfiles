@@ -67,8 +67,8 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # キーリピートの高速化
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # スペルの訂正を無効にする
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
