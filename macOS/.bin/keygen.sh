@@ -22,6 +22,6 @@ git config --file ~/.gitconfig_device_local user.signingkey ${gpgkeyid}
 cat ~/.dotfiles_tmp
 
 eval "$(ssh-agent -s)"
-ssh-add -K ~/.ssh/id_ed25519
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 
 echo "------- Finish generate keys."
