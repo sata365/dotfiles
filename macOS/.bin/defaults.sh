@@ -73,6 +73,43 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # スペルの訂正を無効にする
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Keyboard remap
+# CapsLock    : 30064771129(0x700000039)
+# Left Control: 30064771296(0x7000000E0)
+# Left Command: 30064771299(0x7000000E3)
+
+# MacBook Internal Keyboard
+# CapsLock(30064771129) -> Left Command(30064771299)
+keyboard_id="$(ioreg -c AppleEmbeddedKeyboard -r | grep -Eiw "VendorID|ProductID" | awk '{ print $4 }' | paste -s -d'-\n' -)-0"
+defaults -currentHost write -g com.apple.keyboard.modifiermapping.${keyboard_id} -array-add "
+<dict>
+  <key>HIDKeyboardModifierMappingDst</key>\
+  <integer>30064771299</integer>\
+  <key>HIDKeyboardModifierMappingSrc</key>\
+  <integer>30064771129</integer>\
+</dict>
+"
+
+# HHKB
+# Nane: Topre Corporation HHKB Professional
+# VendorID: 2131(0x0853)
+# ProductID: 256(0x0100)
+# Left Control(30064771296) -> Left Command(30064771299) / Left Command(30064771299) -> Left Control(30064771296)
+defaults -currentHost write -g com.apple.keyboard.modifiermapping.2131-256-0 -array-add "
+<dict>
+  <key>HIDKeyboardModifierMappingDst</key>\
+  <integer>30064771299</integer>\
+  <key>HIDKeyboardModifierMappingSrc</key>\
+  <integer>30064771296</integer>\
+</dict>
+<dict>
+  <key>HIDKeyboardModifierMappingDst</key>\
+  <integer>30064771296</integer>\
+  <key>HIDKeyboardModifierMappingSrc</key>\
+  <integer>30064771299</integer>\
+</dict>
+"
+
 killall Dock
 killall Finder
 
