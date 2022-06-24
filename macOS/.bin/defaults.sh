@@ -101,7 +101,8 @@ defaults -currentHost write -g com.apple.keyboard.modifiermapping.2131-256-0 -ar
   <integer>30064771299</integer>\
   <key>HIDKeyboardModifierMappingSrc</key>\
   <integer>30064771296</integer>\
-</dict>
+</dict>"
+defaults -currentHost write -g com.apple.keyboard.modifiermapping.2131-256-0 -array-add "
 <dict>
   <key>HIDKeyboardModifierMappingDst</key>\
   <integer>30064771296</integer>\
