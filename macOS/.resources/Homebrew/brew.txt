@@ -1,7 +1,10 @@
 git
-openssl
+openssl@1.1
 gnupg2
 sslscan
 pinentry-mac
 mas
 coreutils
+openldap
+ca-certificates
+1password-cli
