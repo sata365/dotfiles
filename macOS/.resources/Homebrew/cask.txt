@@ -7,7 +7,6 @@ macpass
 powershell
 microsoft-edge
 microsoft-auto-update
-jetbrains-toolbox
 gpg-suite
 rectangle
 postman

@@ -19,7 +19,7 @@ fi
 #gpgkeyid=$(gpg --list-secret-keys --keyid-format=long ${gitname} | grep "sec" | awk '{print $2}' | sed -E 's_.+/__g')
 #git config --file ~/.gitconfig_device_local user.signingkey ${gpgkeyid}
 
-cat ~/.dotfiles_tmp
+cat ~/.dotfiles_tmp && ~/.dotfiles_tmp
 
 eval "$(ssh-agent -s)"
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519

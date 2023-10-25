@@ -27,6 +27,7 @@ fi
 /bin/bash ${DOTFILES_REPO_DIR}/macOS/.bin/defaults.sh
 /bin/bash ${DOTFILES_REPO_DIR}/macOS/.bin/resources.sh
 /bin/bash ${DOTFILES_REPO_DIR}/macOS/.bin/brew.sh
+/bin/bash ${DOTFILES_REPO_DIR}/macOS/.bin/mas.sh
 
 if [[ -d ${LOCAL_DOTFILES_REPO_DIR} ]]; then
   /bin/bash ${LOCAL_DOTFILES_REPO_DIR}/macOS/install.sh
