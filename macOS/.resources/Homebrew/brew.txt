@@ -1,5 +1,5 @@
 git
-openssl@1.1
+openssl
 gnupg2
 sslscan
 pinentry-mac

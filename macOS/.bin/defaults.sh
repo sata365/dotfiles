@@ -53,6 +53,12 @@ defaults write com.apple.controlcenter "NSStatusItem Visible WiFi" -int 0
 
 # com.apple.menuextra.clock
 defaults write com.apple.menuextra.clock DateFormat -string 'EEE d MMM HH:mm:ss'
+defaults write com.apple.menuextra.clock FlashDateSeparators -int 0
+defaults write com.apple.menuextra.clock IsAnalog -int 0
+defaults write com.apple.menuextra.clock Show24Hour -int 1
+defaults write com.apple.menuextra.clock ShowDate -int 0
+defaults write com.apple.menuextra.clock ShowDayOfWeek -int 1
+defaults write com.apple.menuextra.clock ShowSeconds -int 1
 
 defaults write com.apple.menuextra.battery ShowPercent -string 'YES'
 
