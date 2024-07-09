@@ -1,5 +1,4 @@
 visual-studio-code
-sourcetree
 firefox
 wireshark
 iterm2
@@ -7,7 +6,6 @@ macpass
 powershell
 microsoft-edge
 microsoft-auto-update
-gpg-suite
 rectangle
 postman
 1password
