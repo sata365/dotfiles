@@ -19,4 +19,13 @@ ln -s ${DOTFILES_REPO_DIR}/macOS/.resources/git/.gitignore_global ~/.gitignore_g
 [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 700 ~/.ssh
 ln -s ${DOTFILES_REPO_DIR}/macOS/.resources/ssh/config ~/.ssh/config && chmod -R 644 ~/.ssh/config
 
+# zsh
+[ -L ~/.zprofile ] && unlink ~/.zprofile
+[ -f ~/.zprofile ] && cp ~/.zprofile ~/.dotbackup/ && rm -f ~/.zprofile
+ln -s ${DOTFILES_REPO_DIR}/macOS/.resources/zsh/.zprofile ~/.zprofile
+[ -L ~/.zshrc ] && unlink ~/.zshrc
+[ -f ~/.zshrc ] && cp ~/.zshrc ~/.dotbackup/ && rm -f ~/.zshrc
+ln -s ${DOTFILES_REPO_DIR}/macOS/.resources/zsh/.zshrc ~/.zshrc
+
+
 echo "------- Finish resource file operation."
