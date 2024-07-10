@@ -10,3 +10,7 @@ rectangle
 postman
 1password
 git-credential-manager
+sourcetree
+font-noto-sans-cjk-jp
+font-noto-serif-cjk-jp
+font-firge
