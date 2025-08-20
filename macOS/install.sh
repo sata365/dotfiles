@@ -2,6 +2,8 @@
 
 echo "------- Start configuration."
 
+xcode-select --install
+
 GIT_BASE_DIR=${GIT_BASE_DIR:=~/git}
 export DOTFILES_REPO_DIR=${GIT_BASE_DIR}/dotfiles
 
