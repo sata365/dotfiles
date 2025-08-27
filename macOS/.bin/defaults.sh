@@ -9,7 +9,8 @@ defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 defaults write NSGlobalDomain AppleLanguages "(en-US,ja-JP)"
 defaults write NSGlobalDomain AppleLocale -string "en_JP"
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
-
+defaults write NSGlobalDomain AppleMenuBarVisibleInFullscreen -int 1
+defaults write NSGlobalDomain _HIHideMenuBar -int 0
 
 # com.apple.dock
 defaults write com.apple.dock autohide -bool true
