@@ -6,3 +6,4 @@ coreutils
 openldap
 ca-certificates
 1password-cli
+go
