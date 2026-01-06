@@ -4,8 +4,10 @@ echo "------- Start Homebrew install."
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+eval "$(/usr/local/bin/brew shellenv)"
+
 xargs brew install < ${DOTFILES_REPO_DIR}/macOS/.resources/Homebrew/brew.txt
-xargs brew install --cask --force  < ${DOTFILES_REPO_DIR}/macOS/.resources/Homebrew/cask.txt
+xargs brew install --cask --force < ${DOTFILES_REPO_DIR}/macOS/.resources/Homebrew/cask.txt
 
 echo "------- Finish Homebrew install."
 
