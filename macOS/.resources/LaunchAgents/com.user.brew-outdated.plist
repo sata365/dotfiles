@@ -9,7 +9,7 @@
     <array>
         <string>/bin/zsh</string>
         <string>-c</string>
-        <string>/opt/homebrew/bin/brew outdated > /dev/null 2>&1</string>
+        <string>/opt/homebrew/bin/brew outdated &gt; /dev/null 2&gt;&amp;1</string>
     </array>
 
     <key>StartCalendarInterval</key>
