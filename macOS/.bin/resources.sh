@@ -31,11 +31,11 @@ ln -s ${DOTFILES_REPO_DIR}/macOS/.resources/zsh/.zshrc ~/.zshrc
 [ -L ~/Library/LaunchAgents/com.user.brew-outdated.plist ] && unlink ~/Library/LaunchAgents/com.user.brew-outdated.plist
 [ -f ~/Library/LaunchAgents/com.user.brew-outdated.plist ] && cp ~/Library/LaunchAgents/com.user.brew-outdated.plist ~/.dotbackup/ && rm -f ~/Library/LaunchAgents/com.user.brew-outdated.plist
 if [ "$(uname -m)" = "arm64" ]; then
-    ## Intel Mac
-    ln -s ${LOCAL_DOTFILES_REPO_DIR}/macOS/.resources/LaunchAgents/com.user.brew-outdated.intel.plist ~/Library/LaunchAgents/com.user.brew-outdated.plist
-else
     ## Apple Silicon
     ln -s ${LOCAL_DOTFILES_REPO_DIR}/macOS/.resources/LaunchAgents/com.user.brew-outdated.plist ~/Library/LaunchAgents/com.user.brew-outdated.plist
+else
+    ## Intel Mac
+    ln -s ${LOCAL_DOTFILES_REPO_DIR}/macOS/.resources/LaunchAgents/com.user.brew-outdated.intel.plist ~/Library/LaunchAgents/com.user.brew-outdated.plist
 fi
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.user.brew-outdated.plist
 
