@@ -1,11 +1,7 @@
 visual-studio-code
 firefox
-wireshark
 iterm2
 powershell
-microsoft-edge
-microsoft-auto-update
-postman
 1password
 git-credential-manager
 font-noto-sans-cjk-jp
