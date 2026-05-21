@@ -37,5 +37,6 @@ else
     ## Apple Silicon
     ln -s ${LOCAL_DOTFILES_REPO_DIR}/macOS/.resources/LaunchAgents/com.user.brew-outdated.plist ~/Library/LaunchAgents/com.user.brew-outdated.plist
 fi
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.user.brew-outdated.plist
 
 echo "------- Finish resource file operation."
