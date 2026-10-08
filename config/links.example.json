@@ -1,10 +1,10 @@
 {
   "links": [
-    { "source": "git/.gitconfig", "dest": "${HOME}/.gitconfig" },
-    { "source": "git/.gitignore_global", "dest": "${HOME}/.gitignore_global" },
-    { "source": "ssh/config", "dest": "${HOME}/.ssh/config", "mode": "644", "parentMode": "700" },
-    { "source": "ssh/conf.d", "dest": "${HOME}/.ssh/conf.d", "mode": "700", "parentMode": "700" },
-    { "source": "zsh/.zprofile", "dest": "${HOME}/.zprofile" },
-    { "source": "zsh/.zshrc", "dest": "${HOME}/.zshrc" }
+    { "source": "git/.gitconfig", "dest": "~/.gitconfig" },
+    { "source": "git/.gitignore_global", "dest": "~/.gitignore_global" },
+    { "source": "ssh/config", "dest": "~/.ssh/config", "mode": "644", "parentMode": "700" },
+    { "source": "ssh/conf.d", "dest": "~/.ssh/conf.d", "mode": "700", "parentMode": "700" },
+    { "source": "zsh/.zprofile", "dest": "~/.zprofile" },
+    { "source": "zsh/.zshrc", "dest": "~/.zshrc" }
   ]
 }
