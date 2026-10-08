@@ -15,7 +15,8 @@ macOSの環境構築用スクリプトを管理するリポジトリです。mac
 │   ├── config.sh           # 設定ファイルの検証・リンク作成
 │   └── brew.sh             # パッケージ一覧の検証・インストール
 └── config/
-    └── defaults.json       # macOSの設定値
+    ├── defaults.json       # macOSの設定値
+    └── links.example.json  # プライベート設定用リンク定義のサンプル
 ```
 
 ## 事前準備
@@ -30,6 +31,7 @@ macOSの環境構築用スクリプトを管理するリポジトリです。mac
 dotfiles-config/
 └── personal/               # 設定名の例
     └── config/
+        ├── links.json      # リンク元・リンク先の定義
         ├── Homebrew/
         │   ├── brew.txt    # Formulaを1行に1つ記載
         │   └── cask.txt    # Caskを1行に1つ記載
@@ -37,7 +39,8 @@ dotfiles-config/
         │   ├── .gitconfig
         │   └── .gitignore_global
         ├── ssh/
-        │   └── config
+        │   ├── config
+        │   └── conf.d/
         └── zsh/
             ├── .zprofile
             └── .zshrc
@@ -93,6 +96,7 @@ export DOTFILES_PROFILE_NAME=personal
 | `DOTFILES_CONFIG_REPO_DIR` | プライベート設定リポジトリの配置先 | `~/git/dotfiles-config` |
 | `DOTFILES_PROFILE_NAME` | `DOTFILES_CONFIG_REPO_DIR`直下の設定名 | 未指定時は候補から選択 |
 | `DOTFILES_CONFIG_DEFINITIONS_DIR` | 設定ディレクトリの直接指定 | `$DOTFILES_CONFIG_REPO_DIR/$DOTFILES_PROFILE_NAME/config` |
+| `DOTFILES_LINKS_DEFINITION_FILE` | リンク定義ファイル | `$DOTFILES_CONFIG_DEFINITIONS_DIR/links.json` |
 | `DOTFILES_DEFAULTS_DEFINITION_FILE` | macOSの設定定義ファイル | `$DOTFILES_REPO_DIR/config/defaults.json` |
 
 空でない`DOTFILES_CONFIG_DEFINITIONS_DIR`を指定した場合は、それを優先し、ディレクトリの存在を確認します。この場合、プライベート設定リポジトリの`.git`の確認と設定名の選択は省略します。
@@ -113,7 +117,7 @@ export DOTFILES_PROFILE_NAME=personal
 /bin/bash .bin/defaults.sh --check
 ```
 
-`brew.sh --check`はパッケージ一覧ファイルの読み取り可否とCPUアーキテクチャ、`config.sh --check`は配置元ファイルの読み取り可否を確認します。パッケージ名の存在や設定ファイルの内容までは検証しません。`defaults.sh --check`はJSONの読み取りと対応する値型などを確認し、設定を書き込みません。
+`brew.sh --check`はパッケージ一覧ファイルの読み取り可否とCPUアーキテクチャ、`config.sh --check`はリンク定義の型、配置元のファイル・ディレクトリの存在と読み取り可否、配置先の重複・親子関係などを確認します。パッケージ名の存在や設定ファイルの内容までは検証しません。`defaults.sh --check`はJSONの読み取りと対応する値型などを確認し、設定を書き込みません。
 
 ## macOSの設定
 
@@ -138,19 +142,27 @@ DOTFILES_REPO_DIR="$PWD" /bin/bash .bin/defaults.sh
 
 ## 設定ファイルの配置
 
-`.bin/config.sh`は、プライベート設定ディレクトリのファイルから以下のシンボリックリンクを作成します。
+`.bin/config.sh`は、`$DOTFILES_CONFIG_DEFINITIONS_DIR/links.json`の`links`配列を読み込み、ファイルやディレクトリへのシンボリックリンクを作成します。JSONの読み取りにはmacOS標準の`plutil`を使用します。定義ファイルの場所は`DOTFILES_LINKS_DEFINITION_FILE`で変更できます。
 
-| 配置元（`DOTFILES_CONFIG_DEFINITIONS_DIR`からの相対パス） | 配置先 |
-| --- | --- |
-| `git/.gitconfig` | `~/.gitconfig` |
-| `git/.gitignore_global` | `~/.gitignore_global` |
-| `ssh/config` | `~/.ssh/config` |
-| `zsh/.zprofile` | `~/.zprofile` |
-| `zsh/.zshrc` | `~/.zshrc` |
+サンプルの[`config/links.example.json`](config/links.example.json)を、プライベート設定リポジトリの`personal/config/links.json`などにコピーし、使用するリンクを編集してください。サンプルには`ssh/conf.d`ディレクトリへのリンクも含まれています。使用しない項目は削除してください。
 
-配置先が通常のファイルの場合は`~/.dotbackup/`にコピーしてから置き換えます。既存のシンボリックリンクは解除して作り直します。バックアップは同じファイル名で保存するため、過去のバックアップを上書きする場合があります。
+```json
+{
+  "links": [
+    { "source": "git/.gitconfig", "dest": "${HOME}/.gitconfig" },
+    { "source": "ssh/config", "dest": "${HOME}/.ssh/config", "mode": "644", "parentMode": "700" },
+    { "source": "ssh/conf.d", "dest": "${HOME}/.ssh/conf.d", "mode": "700", "parentMode": "700" }
+  ]
+}
+```
 
-`~/.ssh`の権限は`700`、リンク先のSSH設定ファイルの権限は`644`に設定します。リンク元を移動・削除すると設定を参照できなくなるため、プライベート設定ディレクトリは配置後も維持してください。
+各項目の`source`と`dest`は空でない文字列で指定します。`source`の相対パスは`DOTFILES_CONFIG_DEFINITIONS_DIR`、`dest`の相対パスはホームディレクトリを基準に解決します。絶対パスと、先頭の`${HOME}/`・`~/`にも対応します。変数展開やコマンド実行は行わず、`${HOME}/`のみホームディレクトリに置き換えます。パス中の`.`・`..`・連続する`/`は使用できません。配置先の重複や親子関係、リンク元とリンク先の重なりはエラーになります。
+
+任意の`mode`と`parentMode`には`"644"`や`"700"`のように3〜4桁の8進数を文字列で指定します。`mode`はリンク先のファイルまたはディレクトリ、`parentMode`は配置先の直上のディレクトリに適用します。ディレクトリ内部の権限は再帰的に変更しません。指定を省略した場合は権限を変更しません。
+
+すべての定義を検証してからリンクを作成します。配置先の親ディレクトリは必要に応じて作成します。既存のファイルやディレクトリは`~/.dotbackup/link.XXXXXXXX/`という一意のディレクトリへ移動してから置き換え、過去のバックアップを上書きしません。既存のシンボリックリンクはリンク自体を解除して作り直します。
+
+リンク元を移動・削除すると設定を参照できなくなるため、プライベート設定ディレクトリは配置後も維持してください。SSHの`conf.d`を利用する場合は、SSH設定に`Include ~/.ssh/conf.d/*`なども記載してください。
 
 ## 開発時の確認
 
