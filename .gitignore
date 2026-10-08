@@ -30,8 +30,11 @@
 !/.vim/after/**
 !/.vim/init.vim
 !/.vim/coc-settings.json
-!/macOS/.bin/
-!/macOS/.bin/**
+!/install.sh
+!/.bin/
+!/.bin/**
+!/config/
+!/config/**
 !/.bin.local
 !/.tmux.conf
 !/.tmux/
@@ -52,9 +55,6 @@
 !/.xinitrc
 !/.xprofile
 !/.xsessionrc
-!/.resources/
-!/macOS/
-!/.resources/**
 !/.gitignore_global
 !/.gitconfig_shared
 

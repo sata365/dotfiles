@@ -1,4 +1,0 @@
-Include conf.d/*
-
-AddKeysToAgent yes
-UseKeychain yes

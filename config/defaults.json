@@ -1,0 +1,76 @@
+{
+  "userDefaults": [
+    { "domain": "NSGlobalDomain", "key": "AppleShowAllExtensions", "type": "bool", "value": true },
+    { "domain": "NSGlobalDomain", "key": "NSDocumentSaveNewDocumentsToCloud", "type": "bool", "value": false },
+    { "domain": "NSGlobalDomain", "key": "NSTableViewDefaultSizeMode", "type": "int", "value": 1 },
+    { "domain": "NSGlobalDomain", "key": "AppleLanguages", "type": "array", "value": ["en-US", "ja-JP"] },
+    { "domain": "NSGlobalDomain", "key": "AppleLocale", "type": "string", "value": "en_JP" },
+    { "domain": "NSGlobalDomain", "key": "AppleInterfaceStyle", "type": "string", "value": "Dark" },
+    { "domain": "NSGlobalDomain", "key": "AppleMenuBarVisibleInFullscreen", "type": "int", "value": 1 },
+    { "domain": "NSGlobalDomain", "key": "_HIHideMenuBar", "type": "int", "value": 0 },
+
+    { "domain": "com.apple.dock", "key": "autohide", "type": "bool", "value": true },
+    { "domain": "com.apple.dock", "key": "autohide-delay", "type": "float", "value": 0 },
+    { "domain": "com.apple.dock", "key": "expose-animation-duration", "type": "float", "value": 0.12 },
+    { "domain": "com.apple.dock", "key": "largesize", "type": "int", "value": 65 },
+    { "domain": "com.apple.dock", "key": "magnification", "type": "int", "value": 1 },
+    { "domain": "com.apple.dock", "key": "mineffect", "type": "string", "value": "scale" },
+    { "domain": "com.apple.dock", "key": "orientation", "type": "string", "value": "bottom" },
+    { "domain": "com.apple.dock", "key": "persistent-apps", "type": "array", "value": [] },
+    { "domain": "com.apple.dock", "key": "show-recents", "type": "bool", "value": false },
+    { "domain": "com.apple.dock", "key": "showhidden", "type": "bool", "value": true },
+    { "domain": "com.apple.dock", "key": "tilesize", "type": "int", "value": 36 },
+
+    { "domain": "com.apple.screencapture", "key": "include-date", "type": "bool", "value": true },
+    { "domain": "com.apple.screencapture", "key": "location", "type": "string", "value": "${HOME}/Documents/screenshots" },
+    { "domain": "com.apple.screencapture", "key": "show-thumbnail", "type": "bool", "value": false },
+    { "domain": "com.apple.screencapture", "key": "type", "type": "string", "value": "png" },
+
+    { "domain": "com.apple.finder", "key": "AppleShowAllFiles", "type": "bool", "value": true },
+    { "domain": "com.apple.finder", "key": "CreateDesktop", "type": "bool", "value": false },
+    { "domain": "com.apple.finder", "key": "FXEnableExtensionChangeWarning", "type": "bool", "value": false },
+    { "domain": "com.apple.finder", "key": "NewWindowTarget", "type": "string", "value": "PfHm" },
+    { "domain": "com.apple.finder", "key": "QLEnableTextSelection", "type": "bool", "value": true },
+    { "domain": "com.apple.finder", "key": "QuitMenuItem", "type": "bool", "value": true },
+    { "domain": "com.apple.finder", "key": "ShowStatusBar", "type": "bool", "value": true },
+    { "domain": "com.apple.finder", "key": "ShowPathbar", "type": "bool", "value": true },
+    { "domain": "com.apple.finder", "key": "ShowTabView", "type": "bool", "value": true },
+
+    { "domain": "com.apple.controlcenter", "key": "NSStatusItem Visible Battery", "type": "int", "value": 0 },
+    { "domain": "com.apple.controlcenter", "key": "NSStatusItem Visible BentoBox", "type": "int", "value": 1 },
+    { "domain": "com.apple.controlcenter", "key": "NSStatusItem Visible Clock", "type": "int", "value": 1 },
+    { "domain": "com.apple.controlcenter", "key": "NSStatusItem Visible DoNotDisturb", "type": "int", "value": 0 },
+    { "domain": "com.apple.controlcenter", "key": "NSStatusItem Visible NowPlaying", "type": "int", "value": 0 },
+    { "domain": "com.apple.controlcenter", "key": "NSStatusItem Visible ScreenMirroring", "type": "int", "value": 0 },
+    { "domain": "com.apple.controlcenter", "key": "NSStatusItem Visible Sound", "type": "int", "value": 0 },
+    { "domain": "com.apple.controlcenter", "key": "NSStatusItem Visible WiFi", "type": "int", "value": 0 },
+
+    { "domain": "com.apple.menuextra.clock", "key": "DateFormat", "type": "string", "value": "EEE d MMM HH:mm:ss" },
+    { "domain": "com.apple.menuextra.clock", "key": "FlashDateSeparators", "type": "int", "value": 0 },
+    { "domain": "com.apple.menuextra.clock", "key": "IsAnalog", "type": "int", "value": 0 },
+    { "domain": "com.apple.menuextra.clock", "key": "Show24Hour", "type": "int", "value": 1 },
+    { "domain": "com.apple.menuextra.clock", "key": "ShowDate", "type": "int", "value": 0 },
+    { "domain": "com.apple.menuextra.clock", "key": "ShowDayOfWeek", "type": "int", "value": 1 },
+    { "domain": "com.apple.menuextra.clock", "key": "ShowSeconds", "type": "int", "value": 1 },
+
+    { "domain": "com.apple.menuextra.battery", "key": "ShowPercent", "type": "string", "value": "YES" },
+    { "domain": "com.apple.desktopservices", "key": "DSDontWriteNetworkStores", "type": "bool", "value": true },
+    { "domain": "com.apple.assistant.support", "key": "Assistant Enabled", "type": "bool", "value": false },
+    { "domain": "com.apple.Siri", "key": "StatusMenuVisible", "type": "bool", "value": false },
+    { "domain": "NSGlobalDomain", "key": "AppleKeyboardUIMode", "type": "int", "value": 3 },
+    { "domain": "NSGlobalDomain", "key": "KeyRepeat", "type": "int", "value": 2 },
+    { "domain": "NSGlobalDomain", "key": "InitialKeyRepeat", "type": "int", "value": 15 },
+    { "domain": "NSGlobalDomain", "key": "NSAutomaticSpellingCorrectionEnabled", "type": "bool", "value": false }
+  ],
+  "systemDefaults": [
+    { "domain": "/Library/Preferences/com.apple.loginwindow", "key": "AdminHostInfo", "type": "string", "value": "HostName" }
+  ],
+  "keyboardMappings": [
+    { "keyboard": "builtin", "source": 30064771129, "destination": 30064771299 },
+    { "keyboard": "2131-256-0", "source": 30064771296, "destination": 30064771299 },
+    { "keyboard": "2131-256-0", "source": 30064771299, "destination": 30064771296 }
+  ],
+  "directories": [
+    "${HOME}/Documents/screenshots"
+  ]
+}
