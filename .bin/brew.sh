@@ -13,7 +13,7 @@ fi
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/config-path.sh"
 resolve_config_definitions
 
-definition_dir="${CONFIG_DEFINITIONS_DIR}"
+definition_dir="${DOTFILES_CONFIG_DEFINITIONS_DIR}"
 
 for definition in \
   "${definition_dir}/Homebrew/brew.txt" \
@@ -34,7 +34,7 @@ case "$(uname -m)" in
 esac
 
 if [ "${check_only}" = true ]; then
-  echo "Config repository is ready: ${CONFIG_REPO_DIR}"
+  echo "Config repository is ready: ${DOTFILES_CONFIG_REPO_DIR}"
   exit 0
 fi
 

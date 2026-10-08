@@ -22,7 +22,7 @@ macOSの環境構築用スクリプトを管理するリポジトリです。mac
 
 対象はmacOSのApple Silicon（`arm64`）およびIntel（`x86_64`）です。Gitでリポジトリを取得できる環境と、依存関係のダウンロードに必要なネットワーク接続を用意してください。システム設定の適用には`sudo`を使用します。
 
-プライベート設定リポジトリを、あらかじめ`~/git/dotfiles-config`にクローンしてください。別の場所を使用する場合は`CONFIG_REPO_DIR`を指定します。スクリプトはプライベート設定リポジトリのクローンや更新を行いません。
+プライベート設定リポジトリを、あらかじめ`~/git/dotfiles-config`にクローンしてください。別の場所を使用する場合は`DOTFILES_CONFIG_REPO_DIR`を指定します。スクリプトはプライベート設定リポジトリのクローンや更新を行いません。
 
 プライベート設定リポジトリには、設定名ごとに以下のファイルを配置します。
 
@@ -52,12 +52,12 @@ dotfiles-config/
 プライベート設定リポジトリを準備した後、公開されている`install.sh`を取得して実行できます。このリポジトリを事前にクローンする必要はありません。
 
 ```sh
-export CONFIG_NAME=personal
+export DOTFILES_PROFILE_NAME=personal
 # 実行ファイルリポジトリのデフォルトの配置先は ~/git/dotfiles
 # 実行ファイルリポジトリの配置先を変更する場合
 # export DOTFILES_REPO_DIR=/path/to/dotfiles
 # プライベート設定リポジトリの配置先を変更する場合
-# export CONFIG_REPO_DIR="/path/to/dotfiles-config"
+# export DOTFILES_CONFIG_REPO_DIR="/path/to/dotfiles-config"
 
 /bin/bash -c "$(curl -fsSL https://go.saveourservers.io/dotfiles-macos)"
 ```
@@ -68,8 +68,8 @@ export CONFIG_NAME=personal
 
 ```sh
 export DOTFILES_REPO_DIR="$PWD"
-export CONFIG_REPO_DIR="$HOME/git/dotfiles-config"
-export CONFIG_NAME=personal
+export DOTFILES_CONFIG_REPO_DIR="$HOME/git/dotfiles-config"
+export DOTFILES_PROFILE_NAME=personal
 
 /bin/bash install.sh
 ```
@@ -89,16 +89,15 @@ export CONFIG_NAME=personal
 
 | 変数 | 用途 | 既定値 |
 | --- | --- | --- |
-| `GIT_BASE_DIR` | リポジトリの配置先の基準ディレクトリ | `$HOME/git` |
-| `DOTFILES_REPO_DIR` | このリポジトリの配置先 | `$GIT_BASE_DIR/dotfiles` |
-| `CONFIG_REPO_DIR` | プライベート設定リポジトリの配置先 | `$GIT_BASE_DIR/dotfiles-config` |
-| `CONFIG_NAME` | `CONFIG_REPO_DIR`直下の設定名 | 未指定時は候補から選択 |
-| `CONFIG_DEFINITIONS_DIR` | 設定ディレクトリの直接指定 | `$CONFIG_REPO_DIR/$CONFIG_NAME/config` |
-| `DEFAULTS_DEFINITION_FILE` | macOSの設定定義ファイル | `$DOTFILES_REPO_DIR/config/defaults.json` |
+| `DOTFILES_REPO_DIR` | このリポジトリの配置先 | `~/git/dotfiles` |
+| `DOTFILES_CONFIG_REPO_DIR` | プライベート設定リポジトリの配置先 | `~/git/dotfiles-config` |
+| `DOTFILES_PROFILE_NAME` | `DOTFILES_CONFIG_REPO_DIR`直下の設定名 | 未指定時は候補から選択 |
+| `DOTFILES_CONFIG_DEFINITIONS_DIR` | 設定ディレクトリの直接指定 | `$DOTFILES_CONFIG_REPO_DIR/$DOTFILES_PROFILE_NAME/config` |
+| `DOTFILES_DEFAULTS_DEFINITION_FILE` | macOSの設定定義ファイル | `$DOTFILES_REPO_DIR/config/defaults.json` |
 
-空でない`CONFIG_DEFINITIONS_DIR`を指定した場合は、それを優先し、ディレクトリの存在を確認します。この場合、プライベート設定リポジトリの`.git`の確認と設定名の選択は省略します。
+空でない`DOTFILES_CONFIG_DEFINITIONS_DIR`を指定した場合は、それを優先し、ディレクトリの存在を確認します。この場合、プライベート設定リポジトリの`.git`の確認と設定名の選択は省略します。
 
-それ以外の場合、`CONFIG_REPO_DIR`には`.git`ディレクトリが必要です。`CONFIG_NAME`には、その直下のディレクトリ名を指定してください。未指定時は`*/config`に一致するディレクトリを探し、候補が1つなら自動選択、複数なら対話形式で選択します。候補が複数ある非対話実行では、`CONFIG_NAME`の指定が必要です。
+それ以外の場合、`DOTFILES_CONFIG_REPO_DIR`には`.git`ディレクトリが必要です。`DOTFILES_PROFILE_NAME`には、その直下のディレクトリ名を指定してください。未指定時は`*/config`に一致するディレクトリを探し、候補が1つなら自動選択、複数なら対話形式で選択します。候補が複数ある非対話実行では、`DOTFILES_PROFILE_NAME`の指定が必要です。
 
 ## 変更を適用せずに検証する
 
@@ -106,8 +105,8 @@ export CONFIG_NAME=personal
 
 ```sh
 export DOTFILES_REPO_DIR="$PWD"
-export CONFIG_REPO_DIR="$HOME/git/dotfiles-config"
-export CONFIG_NAME=personal
+export DOTFILES_CONFIG_REPO_DIR="$HOME/git/dotfiles-config"
+export DOTFILES_PROFILE_NAME=personal
 
 /bin/bash .bin/brew.sh --check
 /bin/bash .bin/config.sh --check
@@ -141,7 +140,7 @@ DOTFILES_REPO_DIR="$PWD" /bin/bash .bin/defaults.sh
 
 `.bin/config.sh`は、プライベート設定ディレクトリのファイルから以下のシンボリックリンクを作成します。
 
-| 配置元（`CONFIG_DEFINITIONS_DIR`からの相対パス） | 配置先 |
+| 配置元（`DOTFILES_CONFIG_DEFINITIONS_DIR`からの相対パス） | 配置先 |
 | --- | --- |
 | `git/.gitconfig` | `~/.gitconfig` |
 | `git/.gitignore_global` | `~/.gitignore_global` |

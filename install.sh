@@ -3,7 +3,7 @@
 echo "------- Start configuration."
 
 export DOTFILES_REPO_DIR="${DOTFILES_REPO_DIR:-${HOME}/git/dotfiles}"
-export CONFIG_REPO_DIR="${CONFIG_REPO_DIR:-${HOME}/git/dotfiles-config}"
+export DOTFILES_CONFIG_REPO_DIR="${DOTFILES_CONFIG_REPO_DIR:-${HOME}/git/dotfiles-config}"
 
 if [ ! -d "${DOTFILES_REPO_DIR}/.git" ]; then
   git clone https://github.com/sata365/dotfiles.git "${DOTFILES_REPO_DIR}"

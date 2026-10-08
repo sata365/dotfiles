@@ -2,7 +2,7 @@
 
 echo "------- Start Defaults settings."
 
-definition_file="${DEFAULTS_DEFINITION_FILE:-${DOTFILES_REPO_DIR}/config/defaults.json}"
+definition_file="${DOTFILES_DEFAULTS_DEFINITION_FILE:-${DOTFILES_REPO_DIR}/config/defaults.json}"
 check_only=false
 
 if [ "${1:-}" = "--check" ]; then

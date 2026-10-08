@@ -13,7 +13,7 @@ fi
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/config-path.sh"
 resolve_config_definitions
 
-definition_dir="${CONFIG_DEFINITIONS_DIR}"
+definition_dir="${DOTFILES_CONFIG_DEFINITIONS_DIR}"
 
 gitconfig_source="${definition_dir}/git/.gitconfig"
 gitignore_source="${definition_dir}/git/.gitignore_global"
