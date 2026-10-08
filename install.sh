@@ -15,8 +15,8 @@ fi
 source "${DOTFILES_REPO_DIR}/.bin/config-path.sh"
 resolve_config_definitions
 
-/bin/bash "${DOTFILES_REPO_DIR}/.bin/brew.sh" --check
 /bin/bash "${DOTFILES_REPO_DIR}/.bin/defaults.sh" --check
+/bin/bash "${DOTFILES_REPO_DIR}/.bin/brew.sh" --check
 /bin/bash "${DOTFILES_REPO_DIR}/.bin/config.sh" --check
 
 if ! xcode-select -p >/dev/null 2>&1; then
@@ -24,7 +24,7 @@ if ! xcode-select -p >/dev/null 2>&1; then
 fi
 
 /bin/bash "${DOTFILES_REPO_DIR}/.bin/defaults.sh"
-/bin/bash "${DOTFILES_REPO_DIR}/.bin/config.sh"
 /bin/bash "${DOTFILES_REPO_DIR}/.bin/brew.sh"
+/bin/bash "${DOTFILES_REPO_DIR}/.bin/config.sh"
 
 echo "------- Finish configuration."
